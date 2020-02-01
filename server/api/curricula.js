@@ -31,16 +31,19 @@ router.post('/', async function (req, res) {
   res.send(201, 'Success')
 })
 
-router.get('/:id', function (req, res) {
-  res.send(req.params)
+router.get('/:id', async function (req, res) {
+  const curriculum = await Curriculum.findById(req.params.id)
+  res.send(curriculum)
 })
 
-router.patch('/:id', function (req, res) {
-  res.send('Got a POST request')
+router.patch('/:id', async function (req, res) {
+  const curriculum = await Curriculum.updateOne({ '_id': req.params.id }, {...req.body})
+  res.send(curriculum)
 })
 
-router.delete('/:id', function (req, res) {
-  res.send('Got a POST request')
+router.delete('/:id', async function (req, res) {
+  await Curriculum.deleteOne({ '_id': req.params.id })
+  res.send(200, 'Success')
 })
 
 module.exports = router
