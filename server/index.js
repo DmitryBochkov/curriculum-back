@@ -1,5 +1,6 @@
 const express = require('express')
 const routes = require('./api/index')
+require('../db/index')
 
 const app = express()
 const port = 5000

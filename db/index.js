@@ -1,7 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/curriculumapp', {useNewUrlParser: true});
 
-const Cat = mongoose.model('Cat', { name: String });
+const Curriculum = require('./Curriculum')
 
-const kitty = new Cat({ name: 'Zildjian' });
-kitty.save().then(() => console.log('meow'));
+// const curriculum = new Curriculum({ name: 'Python' });
+// curriculum.save().then(() => console.log('curriculum'));
+module.exports = {
+  Curriculum
+}
