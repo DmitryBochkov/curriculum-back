@@ -13,5 +13,8 @@
     "express": "^4.17.1",
     "module-alias": "^2.2.2",
     "mongoose": "^5.8.11"
+  },
+  "_moduleAliases": {
+    "@db": "db"
   }
 }
