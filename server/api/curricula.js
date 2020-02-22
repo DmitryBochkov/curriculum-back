@@ -27,8 +27,8 @@ router.post('/', async function (req, res) {
     goal,
     sections
   })
-  await curriculum.save()
-  res.send(201, 'Success')
+  const savedCurriculum = await curriculum.save()
+  res.status(201).send(savedCurriculum)
 })
 
 router.get('/:id', async function (req, res) {
