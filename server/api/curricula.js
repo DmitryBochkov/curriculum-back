@@ -36,6 +36,15 @@ router.get('/:id', async function (req, res) {
   res.send(curriculum)
 })
 
+router.patch('/:id/sections/:sectionId/:type/:typeId', async function (req, res) {
+  const { id, sectionId, type, typeId } = req.params
+  const doc = await Curriculum.findById(id)
+  const section = doc.sections.id(sectionId)
+  let item = section[type].id(typeId)
+  console.log(item);
+  res.send(item)
+})
+
 router.patch('/:id', async function (req, res) {
   const curriculum = await Curriculum.updateOne({ '_id': req.params.id }, {...req.body})
   res.send(curriculum)
