@@ -38,11 +38,17 @@ router.get('/:id', async function (req, res) {
 
 router.patch('/:id/sections/:sectionId/:type/:typeId', async function (req, res) {
   const { id, sectionId, type, typeId } = req.params
+  const { isCompleted, name, url } = req.body
   const doc = await Curriculum.findById(id)
   const section = doc.sections.id(sectionId)
   let item = section[type].id(typeId)
-  console.log(item);
-  res.send(item)
+  item.isCompleted = isCompleted
+  item.name = name
+  item.url = url
+
+  await doc.save()
+  // console.log(updatedItem);
+  res.send(doc)
 })
 
 router.patch('/:id', async function (req, res) {
